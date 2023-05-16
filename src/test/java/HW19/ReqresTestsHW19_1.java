@@ -23,12 +23,12 @@ import static specs.LoginSpec.responseSpec;
 @DisplayName("HW Rest Api, models and specs")
 
 public class ReqresTestsHW19_1 {
+    RequestBodyModel requestBody = new RequestBodyModel();
 
 
     @Test
     @DisplayName("Проверка успешного создания пользователя")
     void testPostCreate() {
-        RequestBodyModel requestBody = new RequestBodyModel();
         requestBody.setName("Testovui");
         requestBody.setJob("QA");
 
@@ -68,7 +68,6 @@ public class ReqresTestsHW19_1 {
     @Test
     @DisplayName("Проверка успешного редактирования пользователя")
     void testPutUpdate() {
-        RequestBodyModel requestBody = new RequestBodyModel();
         requestBody.setName("TestovuiXXX");
         requestBody.setJob("QA Auto");
 
@@ -121,7 +120,7 @@ public class ReqresTestsHW19_1 {
     @Test
     @DisplayName("Проверка неудачной регистрации")
     void testRegisterUnsuccessful() {
-        RequestBodyModel requestBody = new RequestBodyModel();
+
         requestBody.setEmail("incorrectemail@");
 
         String expectedError = "Missing password";
