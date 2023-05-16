@@ -1,5 +1,6 @@
-package hw18_reqres.in;
+package hw18_reqres.in.lombok;
 
+import models.UserData;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -8,8 +9,9 @@ import static io.restassured.RestAssured.given;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ReqresInTestsHW {
+public class ReqresTestsHW19 {
 
     @Test
     @DisplayName("Проверка успешного создания пользователя")
@@ -112,6 +114,23 @@ public class ReqresInTestsHW {
                 .then()
                 .log().all()
                 .spec(responseSpec400)
-                .body("error", is("Missing email or username"));
+                .body("error", is("Missing password"));
+    }
+    @Test
+    @DisplayName("Проверка получения корректных данных по определенному пользователю")
+    void testSingleUserLombok() {
+        UserData data = Specs.request
+                .spec(request)
+                .when()
+                .get("/users/7")
+                .then()
+                .log().all()
+                .spec(responseSpec200)
+                .extract().as(models.UserData.class);
+
+        assertEquals(7, data.getUser().getId());
+        assertEquals("michael.lawson@reqres.in", data.getUser().getEmail());
+        assertEquals("Michael", data.getUser().getFirstName());
+        assertEquals("Lawson", data.getUser().getLastName());
     }
 }
