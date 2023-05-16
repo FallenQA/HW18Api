@@ -1,10 +1,12 @@
 package hw18_reqres.in.lombok;
 
+import hw18_reqres.in.Specs;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.hasItem;
+
 public class Groovy {
     @Test
     @DisplayName("Проверка получения корректных данных по определенному пользователю")

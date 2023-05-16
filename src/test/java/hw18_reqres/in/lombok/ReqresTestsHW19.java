@@ -1,5 +1,6 @@
 package hw18_reqres.in.lombok;
 
+import hw18_reqres.in.Specs;
 import models.UserData;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -86,7 +87,7 @@ public class ReqresTestsHW19 {
                 .then()
                 .spec(responseSpec200)
                 .log().all()
-                .body(matchesJsonSchemaInClasspath("jsonscheme_resp.json"));
+                .body(matchesJsonSchemaInClasspath("scheme/jsonscheme_resp.json"));
     }
 
     @Test
@@ -116,6 +117,7 @@ public class ReqresTestsHW19 {
                 .spec(responseSpec400)
                 .body("error", is("Missing password"));
     }
+
     @Test
     @DisplayName("Проверка получения корректных данных по определенному пользователю")
     void testSingleUserLombok() {

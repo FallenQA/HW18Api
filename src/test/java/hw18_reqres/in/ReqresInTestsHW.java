@@ -84,7 +84,7 @@ public class ReqresInTestsHW {
                 .then()
                 .spec(responseSpec200)
                 .log().all()
-                .body(matchesJsonSchemaInClasspath("jsonscheme_resp.json"));
+                .body(matchesJsonSchemaInClasspath("scheme/jsonscheme_resp.json"));
     }
 
     @Test
