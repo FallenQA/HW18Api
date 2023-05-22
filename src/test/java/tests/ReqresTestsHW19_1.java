@@ -1,7 +1,6 @@
-package HW19;
+package tests;
 
 
-import models.User;
 import models_hw19.ErrorsModel;
 import models_hw19.RequestBodyModel;
 import models_hw19.ResponseModel;
@@ -142,7 +141,6 @@ public class ReqresTestsHW19_1 {
     @Test
     @DisplayName("Проверка получения листа данных")
     void testSingleUserLombok() {
-        User data = new User();
         step("Запрашием получение листа данных", () ->
                 given(requestSpec)
                         .when()
